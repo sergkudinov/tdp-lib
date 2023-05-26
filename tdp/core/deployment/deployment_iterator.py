@@ -31,14 +31,18 @@ class DeploymentIterator(Iterator):
     def __next__(self):
         try:
             while True:
-                if self._failed == True:
-                    raise StopIteration()
                 operation = next(self._iter)
                 service_component = self._service_component_logs[
                     (operation.service, operation.component)
                 ]
 
                 service_component_log = None
+                # Skip running operations when any is failed
+                if self._failed == True:
+                    operation_log = self._run_operation(operation, True)
+                    operation_log.deployment = self.log
+                    return operation_log, service_component_log
+                
                 if operation.action == "config":
                     service_component.configured = True
 

@@ -17,9 +17,16 @@ class DeploymentRunner:
         self._executor = executor
         self._cluster_variables = cluster_variables
 
-    def _run_operation(self, operation):
+    def _run_operation(self, operation, skip = False):
+        if skip:
+            logger.debug(f"Skipping operation {operation.name}")
+            return OperationLog(
+                operation=operation.name,
+                state=StateEnum.PLANNED,
+            )
+        
         logger.debug(f"Running operation {operation.name}")
-
+        
         start = datetime.utcnow()
 
         operation_file = self._collections[operation.collection_name].operations[

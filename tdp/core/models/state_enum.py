@@ -11,11 +11,13 @@ class StateEnum(str, Enum):
         SUCCESS (str): Success state.
         FAILURE (str): Failure state.
         PENDING (str): Pending state.
+        PLANNED (str): Planned state.
     """
 
     SUCCESS = "Success"
     FAILURE = "Failure"
     PENDING = "Pending"
+    PLANNED = "Planned"
 
     @classmethod
     def has_value(cls, value):

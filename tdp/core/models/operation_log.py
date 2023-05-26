@@ -18,7 +18,7 @@ class OperationLog(Base):
         operation (str): Operation name.
         start_time (datetime): Operation start time.
         end_time (datetime): Operation end time.
-        state (enum): Operation state (Success, Failure or Pending).
+        state (enum): Operation state (Success, Failure, Pending or Planned).
         logs (bytes): Operation logs.
     """
 

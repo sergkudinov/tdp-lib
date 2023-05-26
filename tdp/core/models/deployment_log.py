@@ -51,7 +51,7 @@ class DeploymentLog(Base):
         filter_type (enum): Filter type (regex or glob).
         start_time (datetime): Deployment start time.
         end_time (datetime): Deployment end time.
-        state (enum): Deployment state (Success, Failure or Pending).
+        state (enum): Deployment state (Success, Failure, Pending or Planned).
         deployment_type (str): Deployment type (Dag, Operations, Resume or Reconfigure).
         restart (bool): Restart flag.
     """
